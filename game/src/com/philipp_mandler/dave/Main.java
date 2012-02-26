@@ -32,8 +32,15 @@ public class Main {
     Random random = new Random();
     static public ArrayList<Integer> keyboardBuffer = new ArrayList<Integer>();
     
-	public static void main(String[] args) {		
+	public static void main(String[] args) {
 		Main game = new Main();
+		
+		for(String arg : args) {
+			if(arg.equals("fullscreen")) {
+				game.fullscreen = true;
+			}
+		}
+		
 		game.run();
 	}
 	
@@ -41,8 +48,8 @@ public class Main {
 		try {
 			
 			if(fullscreen) {
-				DisplayMode displayMode = new DisplayMode(Display.getDesktopDisplayMode().getWidth(), Display.getDesktopDisplayMode().getHeight());
-				Display.setDisplayModeAndFullscreen(displayMode);
+				DisplayMode displayMode = new DisplayMode(Display.getDesktopDisplayMode().getWidth(), Display.getDesktopDisplayMode().getHeight());				Display.setDisplayModeAndFullscreen(displayMode);
+				
 				screenHeight = Display.getDisplayMode().getHeight();
 				screenWidth = Display.getDisplayMode().getWidth();
 			}
@@ -74,7 +81,7 @@ public class Main {
 		
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
-		GL11.glOrtho(0, screenWidth, screenHeight, 0, 10, -10);
+		GL11.glOrtho(0, screenWidth, screenHeight, 0, 1, -1);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 	}
 	
