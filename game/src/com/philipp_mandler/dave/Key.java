@@ -22,4 +22,6 @@ public class Key {
 	static final int blocktype_last = Keyboard.KEY_HOME;
 	
 	static final int menu = Keyboard.KEY_ESCAPE;
+	static final int exit = Keyboard.KEY_ESCAPE;
+	static final int select = Keyboard.KEY_RETURN;
 }

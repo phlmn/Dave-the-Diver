@@ -157,8 +157,8 @@ public class Main {
 		
 		for(int key : keyboardBuffer) {
 			switch (key) {
-			case Keyboard.KEY_ESCAPE: if(!level.loaded()) closeRequest = true; break;
-			case Keyboard.KEY_RETURN: if(!level.loaded()) level.start(); break;
+			case Key.exit: if(!level.loaded()) closeRequest = true; break;
+			case Key.select: if(!level.loaded()) level.start(); break;
 			}
 		}
 		
