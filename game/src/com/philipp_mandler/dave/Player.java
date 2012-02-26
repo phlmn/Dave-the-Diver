@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 
 public class Player implements IGameObject {
 	private float dt;
-	private Animation anim_walk;
+	private Animation anim_up, anim_up_right, anim_up_left, anim_down, anim_down_right, anim_down_left, anim_right, anim_left;
 	private World world;
 	private Body body;
 	private Direction walkDirection = Direction.Up;
@@ -43,8 +43,10 @@ public class Player implements IGameObject {
 		fixDef.friction = 0.3f;
 		body.createFixture(fixDef);
 		
-		anim_walk = new Animation(Art.playerTexture_walk, 4, 128, 128);
-		anim_walk.setFPS(10);
+		anim_up = new Animation(Art.playerAnimation_up, 4, 128, 128);
+		anim_up.setFPS(10);
+		anim_up_right = new Animation(Art.playerAnimation_up_right, 4, 128, 128);
+		anim_up_right.setFPS(10);
 	}
 	
 	public void tick(float dt) {
@@ -58,6 +60,9 @@ public class Player implements IGameObject {
 		input();
 		
 		if(walk) {
+			anim_up.tick(dt);
+			anim_up_right.tick(dt);
+			
 			switch(walkDirection) {
 			case Up: body.applyForce(new Vec2(0, -2), new Vec2());break;
 			case Down: body.applyForce(new Vec2(0, 2), new Vec2());break;
@@ -96,7 +101,6 @@ public class Player implements IGameObject {
 		}
 		
 		if(Keyboard.isKeyDown(Key.down) || Keyboard.isKeyDown(Key.up) || Keyboard.isKeyDown(Key.left) || Keyboard.isKeyDown(Key.right)) {
-			anim_walk.tick(dt);
 			walk = true;
 		}
 		else {
@@ -138,7 +142,25 @@ public class Player implements IGameObject {
 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
 		GL11.glTranslatef(body.getPosition().x * 64f - 64f, body.getPosition().y * 64f - 64f, 0);
-		anim_walk.render();
+		
+		Direction direction;
+		if(shoot) {
+			direction = shootDirection;
+		}
+		else {
+			direction = walkDirection;
+		}
+		switch(direction) {
+		case Up: anim_up.render(); break;
+//		case Down: anim_down.render(); break;
+//		case Right: anim_right.render(); break;
+//		case Left: anim_left.render(); break;
+		case UpRight: anim_up_right.render(); break;
+//		case UpLeft: anim_up_left.render(); break;
+//		case DownRight: anim_down_right.render(); break;
+//		case DownLeft: anim_down_left.render(); break;
+		default: anim_up.render(); break;
+		}
 		GL11.glPopMatrix();
 		
 		GL11.glPushMatrix();

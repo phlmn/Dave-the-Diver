@@ -40,6 +40,7 @@ public class Bullet implements IGameObject {
 		body = world.createBody(bodyDef);
 		FixtureDef fixDef = new FixtureDef();
 		fixDef.density = 1f;
+		fixDef.friction = 0.2f;
 		CircleShape shape = new CircleShape();
 		shape.m_radius = 10/64f; 
 		fixDef.shape = shape;

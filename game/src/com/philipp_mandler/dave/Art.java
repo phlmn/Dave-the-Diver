@@ -11,7 +11,8 @@ import org.newdawn.slick.util.ResourceLoader;
 
 public class Art {
 
-	static Texture playerTexture_walk = loadTexture("res/dave_up.png");
+	static Texture playerAnimation_up = loadTexture("res/dave_up.png");
+	static Texture playerAnimation_up_right = loadTexture("res/dave_up_right.png");
 	static Texture fishTexture = loadTexture("res/fish.png");
 	static Texture stone = loadTexture("res/stone.png");
 	static Texture titleLogo = loadTexture("res/title.png");

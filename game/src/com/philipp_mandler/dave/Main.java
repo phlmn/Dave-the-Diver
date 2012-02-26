@@ -48,7 +48,8 @@ public class Main {
 		try {
 			
 			if(fullscreen) {
-				DisplayMode displayMode = new DisplayMode(Display.getDesktopDisplayMode().getWidth(), Display.getDesktopDisplayMode().getHeight());				Display.setDisplayModeAndFullscreen(displayMode);
+				DisplayMode displayMode = new DisplayMode(Display.getDesktopDisplayMode().getWidth(), Display.getDesktopDisplayMode().getHeight());
+				Display.setDisplayModeAndFullscreen(displayMode);
 				
 				screenHeight = Display.getDisplayMode().getHeight();
 				screenWidth = Display.getDisplayMode().getWidth();
@@ -140,7 +141,7 @@ public class Main {
 	public void init() {
 		logo = new Animation(Art.titleLogo, 1);
 		stone = new Animation(Art.stone, 1, 64, 64);
-		dave = new Animation(Art.playerTexture_walk, 4, 128, 128);
+		dave = new Animation(Art.playerAnimation_up, 4, 128, 128);
 		dave.setFPS(7);
 		
 		camera = new Camera(Display.getDisplayMode().getWidth(), Display.getDisplayMode().getHeight(), 0, 0);
