@@ -2,7 +2,6 @@ package com.philipp_mandler.dave;
 
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 
@@ -89,14 +88,14 @@ public class Level {
 		if(loaded) {
 			for(int key : Main.keyboardBuffer) {
 				switch (key) {
-				case Keyboard.KEY_F2: startEditor(); break;
-				case Keyboard.KEY_RIGHT: if(editormode) if(selectedBlockX < 63) selectedBlockX++; break;
-				case Keyboard.KEY_LEFT: if(editormode) if(selectedBlockX > 0) selectedBlockX--; break;
-				case Keyboard.KEY_UP: if(editormode) if(selectedBlockY > 0) selectedBlockY--; break;
-				case Keyboard.KEY_DOWN: if(editormode) if(selectedBlockY < 63) selectedBlockY++; break;
-				case Keyboard.KEY_ESCAPE: loaded = false; break;
-				case Keyboard.KEY_HOME: if(editormode) blocks[selectedBlockX][selectedBlockY].setType(blocks[selectedBlockX][selectedBlockY].getType()-1); break;
-				case Keyboard.KEY_END: if(editormode) blocks[selectedBlockX][selectedBlockY].setType(blocks[selectedBlockX][selectedBlockY].getType()+1); break;
+				case Key.leveleditor: startEditor(); break;
+				case Key.block_right: if(editormode) if(selectedBlockX < 63) selectedBlockX++; break;
+				case Key.block_left: if(editormode) if(selectedBlockX > 0) selectedBlockX--; break;
+				case Key.block_up: if(editormode) if(selectedBlockY > 0) selectedBlockY--; break;
+				case Key.block_down: if(editormode) if(selectedBlockY < 63) selectedBlockY++; break;
+				case Key.menu: loaded = false; break;
+				case Key.blocktype_last: if(editormode) blocks[selectedBlockX][selectedBlockY].setType(blocks[selectedBlockX][selectedBlockY].getType()-1); break;
+				case Key.blocktype_next: if(editormode) blocks[selectedBlockX][selectedBlockY].setType(blocks[selectedBlockX][selectedBlockY].getType()+1); break;
 				}
 			}
 						
