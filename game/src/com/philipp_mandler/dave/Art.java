@@ -1,4 +1,4 @@
-package com.philipp_mandler.game;
+package com.philipp_mandler.dave;
 
 import java.awt.Color;
 

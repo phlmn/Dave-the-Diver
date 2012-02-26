@@ -1,4 +1,4 @@
-package com.philipp_mandler.game;
+package com.philipp_mandler.dave;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -12,7 +12,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.PixelFormat;
 
 
-public class Game {
+public class Main {
 	
 	public boolean closeRequest = false;
 	final String windowTitle = "Dave the Diver";
@@ -33,8 +33,8 @@ public class Game {
     static public ArrayList<Integer> keyboardBuffer = new ArrayList<Integer>();
     
 	public static void main(String[] args) {		
-		Game Game = new Game();
-		Game.run();
+		Main game = new Main();
+		game.run();
 	}
 	
 	public void createWindow() {		

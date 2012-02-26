@@ -1,4 +1,4 @@
-package com.philipp_mandler.game;
+package com.philipp_mandler.dave;
 
 public interface IGameObject {
 	public void tick(float dt);

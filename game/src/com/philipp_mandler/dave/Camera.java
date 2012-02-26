@@ -1,4 +1,4 @@
-package com.philipp_mandler.game;
+package com.philipp_mandler.dave;
 
 import org.jbox2d.common.Vec2;
 import org.lwjgl.opengl.GL11;

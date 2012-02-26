@@ -1,4 +1,4 @@
-package com.philipp_mandler.game;
+package com.philipp_mandler.dave;
 
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
@@ -87,7 +87,7 @@ public class Level {
 	
 	public void tick(float dt) {
 		if(loaded) {
-			for(int key : Game.keyboardBuffer) {
+			for(int key : Main.keyboardBuffer) {
 				switch (key) {
 				case Keyboard.KEY_F2: startEditor(); break;
 				case Keyboard.KEY_RIGHT: if(editormode) if(selectedBlockX < 63) selectedBlockX++; break;
