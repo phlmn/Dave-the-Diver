@@ -139,8 +139,6 @@ public class Player implements IGameObject {
 		}
 		
 		GL11.glPushMatrix();
-		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
-		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
 		GL11.glTranslatef(body.getPosition().x * 64f - 64f, body.getPosition().y * 64f - 64f, 0);
 		
 		Direction direction;
@@ -161,11 +159,6 @@ public class Player implements IGameObject {
 //		case DownLeft: anim_down_left.render(); break;
 		default: anim_up.render(); break;
 		}
-		GL11.glPopMatrix();
-		
-		GL11.glPushMatrix();
-		GL11.glLoadIdentity();
-		Art.font.drawString(10f, 20f,"Shooting Direction: "+ shootDirection + "\nWalking Direction: " + walkDirection + "\nSpeed: " + (int)(body.getLinearVelocity().length() * 10) + "\nPos X: " + body.getPosition().x + "\nPos Y: " + body.getPosition().y);
 		GL11.glPopMatrix();
 	}
 

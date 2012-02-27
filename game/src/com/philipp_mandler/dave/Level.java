@@ -60,6 +60,8 @@ public class Level {
 			}
 		}
 		
+		player.render(dt);
+		
 		GL11.glPushMatrix();
 		for(int x = 0; x < 64; x++) {			
 			for(int y = 0; y < 64; y++) {
@@ -79,8 +81,6 @@ public class Level {
 			if(editormode) Art.font.drawString(10f, 110f, "Selected Block: " + selectedBlockX + ", " + selectedBlockY + "\nBlockType: " + blocks[selectedBlockX][selectedBlockY].getType());
 			GL11.glPopMatrix();
 		}
-		
-		player.render(dt);
 		
 	}
 	

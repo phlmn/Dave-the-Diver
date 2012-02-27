@@ -20,6 +20,7 @@ public class Art {
 	static Texture editorFrame = loadTexture("res/editor_frame.png");
 	static Texture block_shadow = loadTexture("res/block_shadow.png");
 	static Texture block_stone = loadTexture("res/block_stone.png");
+	static Texture fish_shadow = loadTexture("res/fish_shadow.png");
 	
 	static UnicodeFont font = loadFont("res/default.ttf");
 
