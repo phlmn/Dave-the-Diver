@@ -40,7 +40,6 @@ public class Main {
 				game.fullscreen = true;
 			}
 		}
-		
 		game.run();
 	}
 	
@@ -184,7 +183,7 @@ public class Main {
 		Display.destroy();		
 	}
 	
-	public void run() {		
+	public void run() {	
 		createWindow();
 		initGL();
 		init();

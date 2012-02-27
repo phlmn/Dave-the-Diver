@@ -78,7 +78,7 @@ public class Level {
 			
 			GL11.glPushMatrix();
 			GL11.glLoadIdentity();
-			if(editormode) Art.font.drawString(10f, 110f, "Selected Block: " + selectedBlockX + ", " + selectedBlockY + "\nBlockType: " + blocks[selectedBlockX][selectedBlockY].getType());
+			if(editormode) Art.font.drawString(10f, 110f, "Selected Block: " + selectedBlockX + ", " + selectedBlockY + "\nBlockType: " + blocks[selectedBlockX][selectedBlockY].getType() + "\nPlayer: " + player.getPosition().x/64f + ", " + player.getPosition().y/64f);
 			GL11.glPopMatrix();
 		}
 		
