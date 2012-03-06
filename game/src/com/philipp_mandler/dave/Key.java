@@ -24,4 +24,7 @@ public class Key {
 	static final int menu = Keyboard.KEY_ESCAPE;
 	static final int exit = Keyboard.KEY_ESCAPE;
 	static final int select = Keyboard.KEY_RETURN;
+	
+	static final int level_save = Keyboard.KEY_Y;
+	static final int level_load = Keyboard.KEY_X;
 }

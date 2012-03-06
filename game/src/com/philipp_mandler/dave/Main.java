@@ -171,7 +171,7 @@ public class Main {
 		dt = (time - lastTime)/1000.0f;
 		lastTime = time;
 		if(!level.loaded()) tickMenu();
-		level.tick(dt);
+		else level.tick(dt);
 		camera.lookAt(level.getPlayerPos().x, level.getPlayerPos().y);
 		camera.tick(dt);
 		System.out.println("Tick "+ tick+" took "+ dt +" seconds.");
@@ -193,7 +193,7 @@ public class Main {
 			render();
 			
 			Display.update();
-//			Display.sync(60);
+			Display.sync(60);
 		}
 		
 		cleanup();

@@ -1,5 +1,11 @@
 package com.philipp_mandler.dave;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 import org.lwjgl.opengl.Display;
@@ -59,7 +65,6 @@ public class Level {
 				GL11.glPopMatrix();
 			}
 		}
-		
 		player.render(dt);
 		
 		GL11.glPushMatrix();
@@ -78,10 +83,51 @@ public class Level {
 			
 			GL11.glPushMatrix();
 			GL11.glLoadIdentity();
-			if(editormode) Art.font.drawString(10f, 110f, "Selected Block: " + selectedBlockX + ", " + selectedBlockY + "\nBlockType: " + blocks[selectedBlockX][selectedBlockY].getType() + "\nPlayer: " + player.getPosition().x/64f + ", " + player.getPosition().y/64f);
+			if(editormode) Art.font.drawString(10f, 110f, "Selected Block: " + selectedBlockX + ", " + selectedBlockY + "\nBlockType: " + blocks[selectedBlockX][selectedBlockY].getType() + "\nPlayer: " + player.getPosition().x/64f + ", " + player.getPosition().y/64f + "\nPress Y to save.");
 			GL11.glPopMatrix();
 		}
 		
+	}
+	
+	public void save(String path) {
+		File file = new File(path);
+		try {
+			file.getParentFile().mkdirs();
+			file.createNewFile();
+			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+			for(int x = 0; x < 64; x++) {
+				for(int y = 0; y < 64; y++) {
+					writer.write(blocks[y][x].getType()+";");
+				}
+				writer.write("\r\n");
+			}
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void load(String filename) {
+		File file = new File(filename);
+		
+		if(file.exists()) {
+			try {
+				BufferedReader reader = new BufferedReader(new FileReader(file));
+				
+				for(int y = 0; true; y++) {
+					String line = reader.readLine();
+					if(line == null) break;
+					String types[] = line.split(";");
+					for(int x = 0; x < types.length; x++) {
+						blocks[x][y].setType(Integer.parseInt(types[x]));
+					}
+				}
+				
+				reader.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+		}
 	}
 	
 	public void tick(float dt) {
@@ -96,12 +142,13 @@ public class Level {
 				case Key.menu: loaded = false; break;
 				case Key.blocktype_last: if(editormode) blocks[selectedBlockX][selectedBlockY].setType(blocks[selectedBlockX][selectedBlockY].getType()-1); break;
 				case Key.blocktype_next: if(editormode) blocks[selectedBlockX][selectedBlockY].setType(blocks[selectedBlockX][selectedBlockY].getType()+1); break;
+				case Key.level_save: if(editormode)  save(System.getProperty("user.home") + "/dave/" + System.currentTimeMillis() / 1000 + ".csv"); break;
+				case Key.level_load: if(editormode)  load(System.getProperty("user.home") + "/dave/level.csv"); break;
 				}
 			}
 						
 			player.tick(dt);
 			world.step(dt, 6, 2);
-		}
-		
+		}		
 	}
 }
